@@ -14,4 +14,6 @@ aws --version
 
 sudo apt update
 
+aws sts get-caller-identity
+
 cd $PROJECT_ROOT
