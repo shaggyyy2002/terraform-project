@@ -1,13 +1,5 @@
 # Pre-Week (Week 0)
 
-## Terraform Installation using bash scripting
-To install terraform automatically we are using bash scripts which we are going to create throughout the bootcamp. 
-[Install terraform CLI](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
-
-**Bash file:** 
-``` source ./bin/install-terraform-cli/sh ```
-
-
 ## Semantic Versioning
 In this bootcamp we are using semantic versioning. If you're unsure what it is check the below link on how it works.
 Given a version number MAJOR.MINOR.PATCH, increment the:
@@ -43,6 +35,35 @@ gpg --no-default-keyring \
 terraform -help
 ```
 
+## Environment Variables  (Env Vars)
+- In the terminal we can set using `export HELLO='world`
+- In the terrminal we unset using `unset HELLO`
+- We can set an env var temporarily when just running a command
+```sh
+HELLO='world' ./bin/print_message
+```
 
-## Environment Variables
- 
+- Within a bash script we can set env without writing export eg.
+```sh
+#!/usr/bin/env bash
+HELLO='world'
+echo $HELLO
+```
+
+### Printing Vars
+We can print an env var using echo eg. `echo $HELLO`
+
+### Scoping of Env Vars
+- When you open up new bash terminals in VSCode it will not be aware of env vars that you have set in another window.
+- If you want to Env Vars to persist across all future bash terminals that are open you need to set env vars in your bash profile. eg. `.bash_profile`
+
+### Persisting Env Vars in Gitpod
+We can persist env vars into gitpod by storing them in Gitpod Secrets Storage.
+```
+gp env HELLO='world'
+```
+All future workspaces launched will set the env vars for all bash terminals opened in thoes workspaces.
+You can also set en vars in the `.gitpod.yml` but this can only contain non-senstive env vars.
+
+### Best Practise 
+While working on a project its always a good practise to create an .env.example so when someone comes to this repository they know what Env Vars this project needs
