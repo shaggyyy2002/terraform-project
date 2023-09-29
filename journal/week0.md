@@ -67,3 +67,25 @@ You can also set en vars in the `.gitpod.yml` but this can only contain non-sens
 
 ### Best Practise 
 While working on a project its always a good practise to create an .env.example so when someone comes to this repository they know what Env Vars this project needs
+
+## AWS CLI
+AWS CLI is installed using the bash script [`./bin/install-aws-cli.sh`](./bin/install-aws-cli.sh)
+
+- [Getting Started with AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+
+- [How to set AWS-CLI Env Vars](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html)
+
+You can create a seprate user for doing this. I have created a seprate IAM user and access keys with specialized permissions so that only required services are accessed from that users. 
+
+We can check if our AWS CLI is configured properly or not
+```sh
+aws sts get-caller-identity
+```
+You should get a response which should look something like this: 
+```json
+{
+    "UserId": "AIDA23PXDQ746251299299",
+    "Account": "746251299299",
+    "Arn": "arn:aws:iam::746251299299:user/terraform-bootcamp"
+}
+```
