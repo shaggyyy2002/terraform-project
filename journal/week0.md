@@ -272,3 +272,8 @@ Provide the following code (replace your token in the file):
 ``````
 
 We have automated this workaround with the following bash script [bin/generate_tfrc_credentials](bin/generate_tfrc_credentials)
+
+## Terraform Alias 
+
+If we use Alias we wont need to type `terraform` again & again, instead we can use `tf`. to run our terraform commands. To set up alias we opened our `~/.bash_profile` and added `alias tf="terraform"`. 
+
