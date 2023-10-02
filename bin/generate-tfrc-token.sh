@@ -15,8 +15,10 @@ if [ ! -d "$TARGET_DIR" ]; then
     mkdir -p "$TARGET_DIR"
 fi
 
-# Generate credentials.tfrc.json with the token
-cat > "$TARGET_FILE" << EOF
+# Check if the target file exists, if not, create it
+if [ ! -e "$TARGET_FILE" ]; then
+    # Generate credentials.tfrc.json with the token
+    cat > "$TARGET_FILE" << EOF
 {
   "credentials": {
     "app.terraform.io": {
@@ -26,4 +28,7 @@ cat > "$TARGET_FILE" << EOF
 }
 EOF
 
-echo "${TARGET_FILE} has been generated."
+    echo "${TARGET_FILE} has been generated."
+else
+    echo "${TARGET_FILE} already exists."
+fi
