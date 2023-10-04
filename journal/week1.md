@@ -26,3 +26,26 @@ PROJECT_ROOT
 └── README.md             # required for root modules
 ```
 [Standard Module Structure](https://developer.hashicorp.com/terraform/language/modules/develop/structure)
+
+
+## Terraform & Varibales
+
+[Variables Docs](https://developer.hashicorp.com/terraform/language/values/variables)
+
+### Terraform Cloud variables
+
+In terraform we can set two kinds of varibales:
+- terraform variable: usually set up on terraform.tfvars file. 
+- environment varibale: variables which are set on bash terminal. eg. AWS_CREDENTIALS 
+We can set environment varibale as sensetive so that its not visibly shown in the UI.
+
+### Loading terraform input variables. 
+
+### var flag
+We can use the `-var` flag to set an input varibale or override the input in the `.tfvars` 
+
+### tfvars-file
+
+Tfvars files allow us to manage variable assignments systematically in a file with the extension .tfvars or .tfvars.json. Despite the fact that there are numerous ways to manage variables in Terraform, tfvars files are the best and most common way to do so due to their simplicity and effectiveness.
+eg. earlier to setup our `user_uuid="_"` we used the `-var` flag on a command to set it up which could be hectic. So instead we just mentions it on our `.tfvars file`(its hidden so it wont get committed to your VCS)
+
