@@ -65,3 +65,31 @@ If you loose your state file you will have to ter down all your cloud infrastruc
 ### Fix Manual Configuration
 
 If someone goes and delete or modifies one of our resources using ClickOps by running `terraform plan` we can acheive the desired state or the earlier state. 
+
+## Terraform Modules
+
+### terraform module structure
+It is recommended to store modules in a `modules` directory when locally developping modules.  
+
+### Passing Input Varibales
+We can pass input varibales from our module.
+The module has to declare the terraform varibale in its own variables.tf 
+```tf
+module "terrahouse_aws" {
+  source = "./modules/terrahouse_aws"
+  user_uuid = var.user_uuid
+  bucket_name = var.bucket_name
+}
+```
+
+### Moduules Sources 
+
+Using the source we can import the module from various places eg. locally, github or terraform registry
+```tf
+module "terrahouse_aws" {
+  source = "./modules/terrahouse_aws"
+}
+
+```
+
+[Modules Sources](https://developer.hashicorp.com/terraform/language/modules/sources)
