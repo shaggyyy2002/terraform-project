@@ -49,3 +49,19 @@ We can use the `-var` flag to set an input varibale or override the input in the
 Tfvars files allow us to manage variable assignments systematically in a file with the extension .tfvars or .tfvars.json. Despite the fact that there are numerous ways to manage variables in Terraform, tfvars files are the best and most common way to do so due to their simplicity and effectiveness.
 eg. earlier to setup our `user_uuid="_"` we used the `-var` flag on a command to set it up which could be hectic. So instead we just mentions it on our `.tfvars file`(its hidden so it wont get committed to your VCS)
 
+## Dealing with Configuration Drift
+
+### What happens if you loose your state file?
+If you loose your state file you will have to ter down all your cloud infrastructure mannualy. You can use  `terraform import` but it wont work for all cloud resources. You will have to check which resources supports import.    
+
+### Fix missing resources with Terraform import
+
+`terrform import aws_s3_bucket.bucket bucket-name`
+
+[Terraform import](https://developer.hashicorp.com/terraform/language/import)
+
+[AWS S3 Bucket Import](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#import)
+
+### Fix Manual Configuration
+
+If someone goes and delete or modifies one of our resources using ClickOps by running `terraform plan` we can acheive the desired state or the earlier state. 
