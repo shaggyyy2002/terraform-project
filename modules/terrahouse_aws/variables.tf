@@ -21,3 +21,21 @@ variable "bucket_name" {
     error_message = "The bucket_name must be between 3 and 63 characters in length and follow the AWS S3 naming criteria."
   }
 }
+variable "index_html_filepath" {
+  description = "Local path to the index.html file"
+  type        = string
+
+  validation {
+    condition     = can(file(var.index_html_filepath))
+    error_message = "The provided index_html_filepath is not a valid file path."
+  }
+}
+variable "error_html_filepath" {
+  description = "Local path to the index.html file"
+  type        = string
+
+  validation {
+    condition     = can(file(var.error_html_filepath))
+    error_message = "The provided index_html_filepath is not a valid file path."
+  }
+}

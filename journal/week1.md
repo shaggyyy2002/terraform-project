@@ -93,3 +93,35 @@ module "terrahouse_aws" {
 ```
 
 [Modules Sources](https://developer.hashicorp.com/terraform/language/modules/sources)
+
+## Consideration while using ChatGPT or LLM's. 
+
+LLM's may not be trained with the latest terraform modules which are now currently depricated. So its better to look into documentation. 
+
+## Working with files in Terraform
+
+### File exists function
+
+This is a built in terraform function to check the existance of the file.
+[File exists Function](https://developer.hashicorp.com/terraform/language/functions/fileexists)
+```hcl
+condition     = can(file(var.index_html_filepath))
+```
+### FileMD
+[Filemd5](https://developer.hashicorp.com/terraform/language/functions/filemd5)
+
+### Path Variable
+In terraform there is a special varibale `path` that allows us to reference local paths:
+- path.module = get the path for current module.
+- path.root = get the path to the root of the modules.
+[Special Path Reference & Variable](https://developer.hashicorp.com/terraform/language/expressions/references#filesystem-and-workspace-info)
+
+> If you changed something in the file and used `terrafor apply` it will not detect any change because it works with files and doesnt check our data. To check if its updated you can add an etag to it so that whenever the content changes the etag changes.
+
+```hcl
+resource "aws_s3_object" "index_html" {
+  bucket = aws_s3_bucket.website_bucket.bucket
+  key    = "index.html"
+  source = "${root.dir}/path/to/index.html"
+}
+```
