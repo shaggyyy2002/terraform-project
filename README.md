@@ -9,4 +9,4 @@
 - [Week 3 Journal](journal/week3.md)
 
 ## Extras
-- [Github Markdown TOC Generator](https://ecotrust-canada.github.io/markdown-toc/)
+- [Github Markdown TOC Generator new](https://ecotrust-canada.github.io/markdown-toc/)
