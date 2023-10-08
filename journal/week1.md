@@ -125,3 +125,38 @@ resource "aws_s3_object" "index_html" {
   source = "${root.dir}/path/to/index.html"
 }
 ```
+
+## Terraform Locals
+
+A local value assigns a name to an expression, so you can use the name multiple times within a module instead of repeating the expression.
+```tf
+locals {
+  service_name = "forum"
+  owner        = "Community Team"
+}
+```
+[Terraform Locals](https://developer.hashicorp.com/terraform/language/values/locals)
+
+
+## Terraform Data Sources
+This allows to source data from cloud resources. 
+
+This is useful when we want to refrence cloud data without importing it.
+
+```tf
+data "aws_caller_identity" "current" {}
+output "account_id" {
+  value = data.aws_caller_identity.current.account_id
+}
+```
+[Data Sources](https://developer.hashicorp.com/terraform/language/data-sources)
+
+## Working with JSON
+
+We use the json encode to create the json ploicy inline in the HCL.
+```tf
+jsonencode({"hello"="world"})
+{"hello":"world"}
+```
+
+[jsonncode](https://developer.hashicorp.com/terraform/language/functions/jsonencode)
