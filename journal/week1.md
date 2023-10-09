@@ -200,3 +200,14 @@ provisioner "remote-exec" {
     ]
   }
 ```
+
+## For Each expressions
+
+For each allows us to enumerate over complex data types
+```sh
+[for s in var.list : upper(s)]
+```
+
+This is mostly useful when youre creating multiples of cloud resource and 
+you want to reduce the amount of terraform code. 
+[For Each Expression](https://developer.hashicorp.com/terraform/language/expressions/for)
