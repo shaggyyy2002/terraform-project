@@ -168,4 +168,35 @@ jsonencode({"hello"="world"})
 ### Terraform Data
 
 Plain data values such as Local Values and Input Variables don't have any side-effects to plan against and so they aren't valid in replace_triggered_by. You can use terraform_data's behavior of planning an action each time input changes to indirectly use a plain value to trigger replacement.
+
 [Terraform Data Sources](https://developer.hashicorp.com/terraform/language/resources/terraform-data)
+
+
+## Provisoners
+Provisioners allows you to execute the commands on compute instances eg. AWS CLI commands. 
+Not recommended by hashicorp because configuration management tools are better fit, but the functionality exists. 
+
+[Provisoners Syntax](https://developer.hashicorp.com/terraform/language/resources/provisioners/syntax)
+
+### Local-exec
+This will execute the commnands on machine running the terraform commands g. plan apply
+
+```tf
+  provisioner "local-exec" {
+    command = "echo The server's IP address is ${self.private_ip}"
+  }
+
+```
+### Remote-exec
+This will execute the commands on a machine you will target. You will need to provide credentials eg. SHH keys
+
+[Remote Exec Syntax](https://developer.hashicorp.com/terraform/language/resources/provisioners/remote-exec)
+
+```tf
+provisioner "remote-exec" {
+    inline = [
+      "puppet apply",
+      "consul join ${aws_instance.web.private_ip}",
+    ]
+  }
+```
