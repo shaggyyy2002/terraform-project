@@ -1,5 +1,35 @@
 # Terraform Beginner Bootcamp 2023 - Week 1
 
+- [Using CLickOPs to setup our distribution](#using-clickops-to-setup-our-distribution)
+- [Root module structure](#root-module-structure)
+- [Terraform & Varibales](#terraform---varibales)
+  * [Terraform Cloud variables](#terraform-cloud-variables)
+  * [Loading terraform input variables.](#loading-terraform-input-variables)
+  * [var flag](#var-flag)
+  * [tfvars-file](#tfvars-file)
+- [Dealing with Configuration Drift](#dealing-with-configuration-drift)
+  * [What happens if you loose your state file?](#what-happens-if-you-loose-your-state-file-)
+  * [Fix missing resources with Terraform import](#fix-missing-resources-with-terraform-import)
+  * [Fix Manual Configuration](#fix-manual-configuration)
+- [Terraform Modules](#terraform-modules)
+  * [terraform module structure](#terraform-module-structure)
+  * [Passing Input Varibales](#passing-input-varibales)
+  * [Moduules Sources](#moduules-sources)
+- [Consideration while using ChatGPT or LLM's.](#consideration-while-using-chatgpt-or-llm-s)
+- [Working with files in Terraform](#working-with-files-in-terraform)
+  * [File exists function](#file-exists-function)
+  * [FileMD](#filemd)
+  * [Path Variable](#path-variable)
+- [Terraform Locals](#terraform-locals)
+- [Terraform Data Sources](#terraform-data-sources)
+- [Working with JSON](#working-with-json)
+  * [Changing the lifecycle of resources](#changing-the-lifecycle-of-resources)
+  * [Terraform Data](#terraform-data)
+- [Provisoners](#provisoners)
+  * [Local-exec](#local-exec)
+  * [Remote-exec](#remote-exec)
+- [For Each expression](#for-each-expressions)
+
 ## Using CLickOPs to setup our distribution
 
 - During the live stream we created an S3 bucket where our static pages will be stored. 
