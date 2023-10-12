@@ -3,23 +3,24 @@ tasks:
     env:
       TF_LOG: DEBUG
     before: |
-        cd $PROJECT_ROOT
-        source ./bin/alias-tf.sh
-        source ./bin/install-terraform-cli.sh 
-        source ./bin/generate-tfrc-token.sh
-        cp $PROJECT_ROOT/terraform.tfvars.example  $PROJECT_ROOT/terraform.tfvars
+      cd $PROJECT_ROOT
+      source ./bin/set_tf_alias
+      source ./bin/install_terraform_cli
+      source ./bin/generate_tfrc_credentials
+      cp $PROJECT_ROOT/terraform.tfvars.example $PROJECT_ROOT/terraform.tfvars
   - name: sinatra
     before: | 
-      cd $PROJECT_ROOT/terratowns_mock_server
+      cd $PROJECT_ROOT
+      cd terratowns_mock_server
       bundle install
-      bundle exec ruby server.rb       
+      bundle exec ruby server.rb 
   - name: aws-cli
     env:
       AWS_CLI_AUTO_PROMPT: on-partial
     before: |
-        cd $PROJECT_ROOT
-        source ./bin/install-aws-cli.sh
-        source ./bin/alias-tf.sh
+      cd $PROJECT_ROOT
+      source ./bin/set_tf_alias
+      source ./bin/install_aws_cli
   - name: http-server
     before: |
       cd $PROJECT_ROOT
@@ -30,3 +31,6 @@ vscode:
   extensions:
     - amazonwebservices.aws-toolkit-vscode
     - hashicorp.terraform
+    - phil294.git-log--graph
+    - mhutchie.git-graph
+    - phil294.git-log--graph
