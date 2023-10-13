@@ -4,9 +4,9 @@ tasks:
       TF_LOG: DEBUG
     before: |
       cd $PROJECT_ROOT
-      source ./bin/set_tf_alias
-      source ./bin/install_terraform_cli
-      source ./bin/generate_tfrc_credentials
+      source ./bin/alias-tf.sh
+      source ./bin/install-terraform-cli.sh
+      source ./bin/generate-tfrc-credentials.sh
       cp $PROJECT_ROOT/terraform.tfvars.example $PROJECT_ROOT/terraform.tfvars
   - name: sinatra
     before: | 
@@ -19,8 +19,8 @@ tasks:
       AWS_CLI_AUTO_PROMPT: on-partial
     before: |
       cd $PROJECT_ROOT
-      source ./bin/set_tf_alias
-      source ./bin/install_aws_cli
+      source ./bin/alias-tf.sh
+      source ./bin/install-aws-cli.sh
   - name: http-server
     before: |
       cd $PROJECT_ROOT
