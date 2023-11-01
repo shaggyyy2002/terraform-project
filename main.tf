@@ -38,6 +38,6 @@ resource "terratowns_home" "home" {
 If you're in Mumbai,INDIA and want to explore the city Cick on the page.  
 DESCRIPTION
   domain_name = module.terrahouse_aws.cloudfront_url
-  town = "The Nomad Pad"
+  town = "the-nomad-pad"
   content_version = 1
 }
