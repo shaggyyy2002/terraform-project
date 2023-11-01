@@ -6,6 +6,7 @@ tasks:
       cd $PROJECT_ROOT
       source ./bin/alias-tf.sh
       source ./bin/install-terraform-cli.sh
+      source ./bin/build_provider.sh
       source ./bin/generate-tfrc-credentials.sh
       cp $PROJECT_ROOT/terraform.tfvars.example $PROJECT_ROOT/terraform.tfvars
   - name: sinatra
